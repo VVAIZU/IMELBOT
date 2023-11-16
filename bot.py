@@ -2,6 +2,8 @@ import telebot
 from telebot import types
 import config
 
+TOKEN = '6534971012:AAEXWo4l06RS8U-6nzXbrwmGVy5YnUZNBIs'
+
 bot = telebot.TeleBot(config.TOKEN)
 
 def webAppKeyboard():
