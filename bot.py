@@ -4,7 +4,7 @@ import config
 
 TOKEN = '6534971012:AAEXWo4l06RS8U-6nzXbrwmGVy5YnUZNBIs'
 
-bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(TOKEN)
 
 def webAppKeyboard():
     keyboard = types.ReplyKeyboardMarkup(row_width=1)
