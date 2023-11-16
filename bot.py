@@ -1,6 +1,5 @@
 import telebot
 from telebot import types
-import config
 
 TOKEN = '6534971012:AAEXWo4l06RS8U-6nzXbrwmGVy5YnUZNBIs'
 
