@@ -172,18 +172,35 @@ def handle_choose_shop_query(call):
     elif action == 'no':
         bot.send_message(call.message.chat.id, "Ок, вы можете выбрать салон позже.")
 
-# Функция для обработки введенного номера телефона
+# # Функция для обработки введенного номера телефона
+# def handle_phone_input(message):
+#     user_id = message.from_user.id
+#     phone_number = message.text
+
+#     # Здесь вы можете добавить дополнительную валидацию номера телефона
+
+#     # Обновляем номер телефона в базе данных пользователя
+#     cursor.execute("UPDATE users SET phone_number = %s WHERE telegram_id = %s", (phone_number, user_id))
+#     conn.commit()
+
+#     bot.send_message(message.chat.id, f"Спасибо! Номер телефона {phone_number} успешно сохранен. Используйте конструктор, чтобы изменить или создать новую запись!", reply_markup=webAppKeyboard())
+
 def handle_phone_input(message):
     user_id = message.from_user.id
     phone_number = message.text
 
-    # Здесь вы можете добавить дополнительную валидацию номера телефона
+    # Проводим валидацию номера телефона с использованием регулярного выражения
+    phone_pattern = re.compile(r'^\+7[0-9]{10}$')  # Пример паттерна для российского номера
+    if not phone_pattern.match(phone_number):
+        bot.send_message(message.chat.id, "Пожалуйста, введите корректный российский номер телефона (например, +79991234567):")
+        return
 
     # Обновляем номер телефона в базе данных пользователя
     cursor.execute("UPDATE users SET phone_number = %s WHERE telegram_id = %s", (phone_number, user_id))
     conn.commit()
 
     bot.send_message(message.chat.id, f"Спасибо! Номер телефона {phone_number} успешно сохранен. Используйте конструктор, чтобы изменить или создать новую запись!", reply_markup=webAppKeyboard())
+
 
 # Callback для выбора обновления номера телефона
 @bot.callback_query_handler(lambda call: call.data == 'update_phone')
