@@ -4,11 +4,11 @@ import os
 import psycopg2 
 import re
 
-TOKEN = '6534971012:AAEXWo4l06RS8U-6nzXbrwmGVy5YnUZNBIs'
+TOKEN = ''
 
 bot = telebot.TeleBot(TOKEN)
 
-DATABASE_URL = 'postgresql://postgres:*AeGBca5aCbaB2FCgG1D*ceG2cE53BBF@viaduct.proxy.rlwy.net:10051/railway'
+DATABASE_URL = ''
 
 
 # CONNECTING TO DATABASE
